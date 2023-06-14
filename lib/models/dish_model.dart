@@ -1,26 +1,3 @@
-// class Dish {
-
-//   Dish({required this.dishes});
-
-//   late  List<DishModel> dishes;
-//   Dish.fromJson(Map<String, dynamic> json) {
-//     if (json['dishes'] != null) {
-//       dishes = List<DishModel>();
-//       json['dishes'].forEach((v) {
-//         dishes.add(DishModel.fromJson(v));
-//       });
-//     }
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     final Map<String, dynamic> data = new Map<String, dynamic>();
-//     if (this.dishes != null) {
-//       data['dishes'] = this.dishes.map((v) => v.toJson()).toList();
-//     }
-//     return data;
-//   }
-// }
-
 class DishModel {
   late int id;
   late String name;
@@ -52,16 +29,6 @@ class DishModel {
       tegs: List<String>.from(json['tegs']),
     );
   }
-
-  // DishModel.fromJson(Map<String, dynamic> json) {
-  //   id = json['id'];
-  //   name = json['name'];
-  //   price = json['price'];
-  //   weight = json['weight'];
-  //   description = json['description'];
-  //   imageUrl = json['image_url'];
-  //   tegs = json['tegs'].cast<String>();
-  // }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

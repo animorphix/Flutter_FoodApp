@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [BlocProvider(create: (_) => CartBloc()..add(LoadCart()))],
-        child: const MaterialApp(
+        child: MaterialApp(
+          theme: ThemeData(
+              textTheme: const TextTheme(
+                  bodyMedium: TextStyle(fontFamily: 'SF Pro Display'))),
           home: MainPage(),
         ));
   }

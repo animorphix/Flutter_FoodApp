@@ -38,10 +38,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Text(
                     location,
                     style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black,
+                        fontFamily: 'SF Pro Display'),
                   ),
                   Text(
                     formattedDate,

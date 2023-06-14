@@ -6,10 +6,11 @@ import 'package:intl/intl.dart';
 
 import '../bloc/cart_bloc/cart_bloc.dart';
 import '../models/cart_model.dart';
+import '../widgets/cart_item_widget.dart';
 import '../widgets/custom_app_bar.dart';
 
 class CartScreen extends StatelessWidget {
-  final formattedDate = DateFormat('dd.MM').format(DateTime.now());
+  final formattedDate = DateFormat('dd.MM.yyyy').format(DateTime.now());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,35 +23,14 @@ class CartScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is CartLoaded) {
             return ListView.builder(
-              itemCount: state.cart.products.length,
+              itemCount: state.cart.productQuantity().keys.length,
               itemBuilder: (context, index) {
-                final cartItem = state.cart.products[index];
-                return ListTile(
-                  leading: Image.network(cartItem.imageUrl),
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(cartItem.name),
-                      Row(
-                        children: [
-                          Text('${cartItem.price.toStringAsFixed(2)} ₽'),
-                          const Text(' · '),
-                          Text(
-                            ' ${cartItem.weight.toString()} г',
-                            style:
-                                TextStyle(color: Colors.black.withOpacity(0.4)),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  trailing: ElevatedButton(
-                    onPressed: () {
-                      BlocProvider.of<CartBloc>(context)
-                          .add(AddProduct(cartItem));
-                    },
-                    child: Text('Add'),
-                  ),
+                final cartItem =
+                    state.cart.productQuantity().keys.elementAt(index);
+                return CartItemWidget(
+                  cartItem: cartItem,
+                  quantity:
+                      state.cart.productQuantity().values.elementAt(index),
                 );
               },
             );
